@@ -1,6 +1,6 @@
 version : "3.3"
 services :
   web :
-     image: allulokesh01cloud/django-notes-app .
+     image: allulokesh01cloud/django-notes-app :latest
      ports :
          - "8083:8083"
