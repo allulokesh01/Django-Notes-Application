@@ -4,7 +4,7 @@ pipeline{
     stage("Code"){
       steps{
         echo "Code cloned"
-git url:'https://github.com/allulokesh01/Django-Notes-Application',
+git url:'https://github.com/allulokesh01/Django-Notes-Application.git',
         branch:'main'
       }
     }
@@ -20,7 +20,7 @@ git url:'https://github.com/allulokesh01/Django-Notes-Application',
     }
     stage("Pushing to Docker Hub"){
       steps{
-        withCredentials ([usernamePassword( credentialsId:"docker-hub­ credentials",passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+        withCredentials ([usernamePassword( credentialsId:"allulokesh",passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
         sh "docker tag notes-app ${env.DOCKER_USERNAME}/django-notes­ application:latest"
         sh "docker login -u ${env.DOCKER_USERNAME}-p${env.DOCKER_PASSWORD} "
         sh "docker push ${env.DOCKER_USERNAME}/django-notes:latest"
